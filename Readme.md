@@ -2,7 +2,14 @@
 
 #### Description
 
-An arm64 assembly level debugger for macOS/iOS/Android.
+An arm64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
+ 
+ * GUI Runtime is based on [Qt](https://www.qt.io/) 
+ * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg)
+ * DebugEngine is based on [LLDB](http://lldb.llvm.org/)
+ * Assembler/Disassembler is based on [LLVM](http://llvm.org/)
+ * Script is based on [Python](https://www.python.org/)
+ * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/)
 
 Debugger:
 
@@ -13,7 +20,16 @@ Debugger:
 Debugger Server:
 
  * iOS user: install [a64dbg-server.deb](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server.deb) to iDevice
+```
+scp A64Dbg/a64dbg-server.deb root@ip:/tmp/
+ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.deb
+```
  * Android user: push [a64dbg-server](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server) to Android Device
+```
+adb push A64Dbg/a64dbg-server /data/local/tmp/
+adb shell chmod -R 755 /data/local/tmp/a64dbg-server/
+cd /data/local/tmp/a64dbg-server; ./lidadbg-server
+```
 
 Current Status:
 
@@ -40,7 +56,22 @@ Follow us for update or bug report:
 
 
 #### FAQ
+```
+Q: a64dbg-server.deb支持的iOS版本？
 
+A: 内置的debugserver支持iOS >= 10.0，如果无法运行，请替换成自己的debugserver；
+```
+```
+Q: 为什么首次使用时Attaching要很久？
+
+A: 首次使用A64Dbg时很多模块lldb还未传回本地生成副本，所以会花费更多时间初始化调试模块；
+```
+```
+Q: 输入Android设备Wifi IP连接调试服务出现error: Device "?.?.?.?" not found该如何处理？
+
+A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
+   2.调试器设置界面Android设备IP地址填入127.0.0.1；
+```
 
 
 #### Version History
