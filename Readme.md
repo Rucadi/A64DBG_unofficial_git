@@ -15,7 +15,7 @@ Debugger:
 
  * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win)
  * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac)
- * ARM macOS: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS)
+ * ARM macOS user: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS)
 
 Debugger Server:
 
