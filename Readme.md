@@ -4,18 +4,25 @@
 
 An arm64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
  
- * GUI Runtime is based on [Qt](https://www.qt.io/) 
- * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg)
- * DebugEngine is based on [LLDB](http://lldb.llvm.org/)
- * Assembler/Disassembler is based on [LLVM](http://llvm.org/)
- * Script is based on [Python](https://www.python.org/)
- * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/)
+ * GUI Runtime is based on [Qt](https://www.qt.io/); 
+ * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
+ * DebugEngine is based on [LLDB](http://lldb.llvm.org/);
+ * Assembler/Disassembler is based on [LLVM](http://llvm.org/);
+ * Script is based on [Python](https://www.python.org/);
+ * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
 
 Debugger:
 
- * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win)
- * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac)
- * ARM macOS user: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS)
+ * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win);
+ * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac);
+ * ARM macOS user: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS);
+ ```
+macOS user: use the Preference menu to configurate the remote debugging.
+Windows user: use the MainMenu/Options/Preference to configurate the remote debugging.
+
+iOS user: only support the real iDevice IP configuration.
+Android user: only support the 127.0.0.1 IP configuration.
+```
 
 Debugger Server:
 
@@ -29,6 +36,9 @@ ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.deb
 adb push A64Dbg/a64dbg-server /data/local/tmp/
 adb shell chmod -R 755 /data/local/tmp/a64dbg-server/
 cd /data/local/tmp/a64dbg-server; ./lidadbg-server
+```
+```
+adb forward tcp:30333 tcp:30333
 ```
 
 Current Status:
