@@ -86,6 +86,8 @@ A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
 
 #### Version History
 
+2021/1/1:
+ * 发布V1.0.0；
 
 
 #### Known Issue
@@ -94,4 +96,24 @@ A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
 
 #### Screenshot
 
+![start](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/start.png)
 
+![config](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/config.png)
+
+![attach](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/attach.png)
+
+![cpu](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/cpu.png)
+
+![callstack](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/callstack.png)
+
+![threads](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/threads.png)
+
+![modules](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/modules.png)
+
+![log](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/log.png)
+
+![fileeditor](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/fileeditor.png)
+
+![filediser](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/filediser.png)
+
+![database](https://gitee.com/geekneo/PantaDocumentRes/raw/master/a64dbg/database.png)
