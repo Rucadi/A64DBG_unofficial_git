@@ -83,10 +83,13 @@ A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
    2.调试器设置界面Android设备IP地址填入127.0.0.1；
 ```
 ```
-Q：通过gitee下载的macOS版本，运行提示包以损坏该如何处理？
+Q：通过gitee下载的macOS版本，运行提示包已损坏该如何处理？
 
-A：使用如下命令重新签一下名，然后首次使用时按住Control键以允许运行：
+A：1.使用如下命令重新签一下名，然后首次使用时按住Control键以允许运行：
    codesign --force --deep --sign - /path/to/A64Dbg.app
+   或者
+   2.推荐使用git clone --depth=1的方式下载，这样以后可以通过git pull的方式更新，
+   方便快捷不容易出错；
 ```
 
 
