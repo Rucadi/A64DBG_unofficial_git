@@ -45,9 +45,9 @@ Current Status:
 
 |Platform|Description|Released|Business Model|
 |-|-|-|-|
-|Local ARM macOS/Simulator|ARM macOS及其iOS Simulator模拟器的本地调试|No|Free|
-|Remote iOS|基于lldb-server/debugserver的传统iOS远程调试|No|Free|
-|Remote Android|基于lldb-server的传统Android远程调试|No|Free|
+|Local ARM macOS/Simulator|ARM macOS及其iOS Simulator模拟器的本地调试|Yes|Free|
+|Remote iOS|基于lldb-server/debugserver的传统iOS远程调试|Yes|Free|
+|Remote Android|基于lldb-server的传统Android远程调试|Yes|Free|
 |Local VP iOS Simulator|基于arm64翻译器的跨架构调试，比如在x64 macOS调试arm64的iOS程序|No|Buy|
 |Remote VP Android Emulator|基于arm64翻译器的跨架构调试，比如在x64 Windows调试arm64的Android程序|No|Buy|
 |Local UnicornVM|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的本地调试，比如在x64桌面调试arm64的代码|No|Buy|
@@ -81,6 +81,12 @@ Q: 输入Android设备Wifi IP连接调试服务出现error: Device "?.?.?.?" not
 
 A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
    2.调试器设置界面Android设备IP地址填入127.0.0.1；
+```
+```
+Q：通过gitee下载的macOS版本，运行提示包以损坏该如何处理？
+
+A：使用如下命令重新签一下名，然后首次使用时按住Control键以允许运行：
+   codesign --force --deep --sign - /path/to/A64Dbg.app
 ```
 
 
