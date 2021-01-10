@@ -24,6 +24,13 @@ iOS user: only support the real iDevice IP configuration.
 Android user: only support the 127.0.0.1 IP configuration.
 ```
 
+Plugin DevTool:
+
+ * Windows user: download from [ADPluginDev-Win](https://gitee.com/geekneo/ADPluginDev-Win);
+ * Intel macOS user: download from [ADPluginDev-Mac](https://gitee.com/geekneo/ADPluginDev-Mac);
+ * ARM macOS user: download from [ADPluginDev-iOS](https://gitee.com/geekneo/ADPluginDev-iOS);
+ * The adpsdk and demo, look into include/plugin for more information.
+
 Debugger Server:
 
  * iOS user: install [a64dbg-server.deb](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server.deb) to iDevice
@@ -94,6 +101,14 @@ A：1.使用如下命令重新签一下名，然后首次使用时按住Control�
 
 
 #### Version History
+
+2021/1/10:
+ * 发布V1.1.0;
+ * 1.添加ADPlugin插件体系；
+ * 2.添加adpdef.hpp插件开发sdk；
+ * 3.添加两个插件样例工程；
+ * 4.添加调试命令行程序启动参数输入；
+ * 5.修复Dump/SDump窗口Follow QWord内存地址错误的问题；
 
 2021/1/5:
  * 发布V1.0.1;
