@@ -40,8 +40,8 @@ typedef long adpint;
 // c api definition
 #define __ADP_API__ __ADP_CDECL__ __ADP_EXPORT__
 
-// main entry error code definition
-typedef enum {
+// api entry error code definition
+enum adp_error_t {
   adp_err_ok = 0,      // success
   adp_err_failed,      // failed
   adp_err_canceled,    // canceled
@@ -58,14 +58,14 @@ typedef enum {
   adp_err_softbug,     // software bug assertion
   adp_err_continue,    // for traverser
   adp_err_break,       // for traverser
-} adp_error_t;
+};
 
 // event definition
 #define decl_event(n, desc) adp_event_##n
 #define decl_event_input(n, input, desc) decl_event(n, desc)
 #define decl_event_result(n, result, desc) decl_event(n, desc)
 #define decl_event_io(n, input, result, desc) decl_event(n, desc)
-typedef enum {
+enum adp_event_t {
   // event with no Input/Output
   decl_event(loaded, "after loaded this plugin"),
   decl_event(pre_unload, "before unload this plugin"),
@@ -76,7 +76,7 @@ typedef enum {
   decl_event(debug_terminated, "tell plugin the debug session has terminated"),
 
   // event with Input
-  // vars.ptr is adp_module_t*
+  // input.ptr is adp_module_t*
   decl_event_input(module_analyzed, ptr,
                    "tell plugin finished analyzing a module"),
 
@@ -84,46 +84,53 @@ typedef enum {
   decl_event_result(version, str_const, "ask this plugin for its sdk version"),
   decl_event_result(menuname, str_const,
                     "ask this plugin for its plugin menu name"),
+  // ptr.p0 should be adp's self version string
+  // ptr.p1 should be adp's description
+  decl_event_result(adpinfo, ptr,
+                    "ask this plugin for its self version and description"),
 
   // event with Input for Result
   // currently nothing
 
   //...
   // Tell me, what the extra event do you want ?
-} adp_event_t;
+};
 
 // bytes definition
-typedef struct {
+struct adp_bytes_t {
   char *ptr;
   adpint len;
-} adp_bytes_t;
+};
 
 // pair definition
-typedef struct {
+struct adp_pair_t {
   void *p0;
   void *p1;
-} adp_pair_t;
+};
 
 // module definition
-typedef struct {
+struct adp_module_t {
   const char *path;
   // whether loaded its adb file
   adpint hasadb;
   adpint start;
   // note, it's not the real end address, usually it's the next module's start
   adpint end;
-} adp_module_t;
+};
 
 // function definition
-typedef struct {
+struct adp_func_t {
   const char *name;
   // rva to its parent module
   adpint rvastart;
   adpint rvaend;
-} adp_func_t;
+};
 
 // api definition
-typedef struct {
+struct adp_api_t {
+  /*
+   * add by adp v1.0.0
+   */
   // get current A64Dbg's version
   const char *(*version)();
   // logger
@@ -192,54 +199,64 @@ typedef struct {
   adp_error_t (*lldbCommandResult)(const char *cmd, char *result, adpint size);
   // register plugin's command handler, return its id for unregister
   adpint (*registerCommander)(const char *name,
-                              void (*handler)(const char *cmd));
+                              bool (*handler)(const char *cmd));
   // unregister command handler, idval is returned by registerCommander
   void (*unregisterCommander)(adpint idval);
+  // attach to the pid for selected default platform
+  void (*attach)(adpint pid);
+  // detach from current debugee
+  void (*detach)();
   //...
   // Tell me, what the extra api do you want ?
-} adp_api_t;
+};
+
+// main entry input vars definition
+struct adp_input_t {
+  // 8 bytes integer input
+  adpint val;
+
+  // string input
+  const char *str;
+
+  // binary buffer input
+  adp_bytes_t buf;
+
+  // depend on event
+  const void *ptr;
+};
+
+// main entry output result
+union adp_result_t {
+  // 8 bytes integer result
+  adpint val;
+
+  // string result
+  const char *str_const;
+  char *str_dyn;  // will free this buffer after use
+
+  // binary buffer result
+  adp_bytes_t buf_const;
+  adp_bytes_t buf_dyn;  // will free this buffer after use
+
+  // depend on event
+  adp_pair_t ptr;
+};
 
 // payload for plugin main entry difinition
-typedef struct {
+struct adp_payload_t {
   // constants
   const adp_api_t *api;    // all the A64Dbg's user api
   adpint consts_dummy[8];  // for future use
 
   // input vars
-  adp_event_t event;  // why call this plugin main entry
-  struct {
-    // 8 bytes integer input
-    adpint val;
-
-    // string input
-    const char *str;
-
-    // binary buffer input
-    const adp_bytes_t buf;
-
-    // depend on event
-    const void *ptr;
-  } vars;
-  adpint vars_dummy[8];  // for future use
+  adp_event_t event;      // why call this plugin main entry
+  adp_input_t input;      // input vars for plugin
+  adpint input_dummy[8];  // for future use
 
   // output result
-  union {
-    // 8 bytes integer result
-    adpint val;
-
-    // string result
-    const char *str_const;
-    char *str_dyn;  // will free this buffer after use
-
-    // binary buffer result
-    adp_bytes_t buf_const;
-    adp_bytes_t buf_dyn;  // will free this buffer after use
-
-    // depend on event
-    adp_pair_t ptr;
-  } result;
+  adp_result_t result;
   adpint dummy[8];  // for future use
-} adp_payload_t;
+};
 
 // a valid A64Dbg plugin must implement this function
 __ADP_API__ adp_error_t adp_main(adp_payload_t *adp);
