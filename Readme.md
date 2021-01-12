@@ -31,6 +31,9 @@ Plugin DevTool:
  * ARM macOS user: download from [ADPluginDev-iOS](https://gitee.com/geekneo/ADPluginDev-iOS);
  * The adpsdk and demo, look into include/plugin for more information.
 
+Official Plugin:
+ * iPhone2Sim: one click helper for A64Dbg and Simulator, dependent on [Textobot](https://gitee.com/geekneo/Textobot);
+
 Debugger Server:
 
  * iOS user: install [a64dbg-server.deb](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server.deb) to iDevice
@@ -101,6 +104,11 @@ A：1.使用如下命令重新签一下名，然后首次使用时按住Control�
 
 
 #### Version History
+
+2021/1/12:
+ * 发布V1.1.1（macOS/iOS）;
+ * 1.添加iPhone2Sim插件，支持一键解密Macho至缓存文件（Dec2AD）;
+ * 2.修复iOS缓存文件重复下载的问题;
 
 2021/1/10:
  * 发布V1.1.0;
