@@ -105,6 +105,10 @@ A：1.使用如下命令重新签一下名，然后首次使用时按住Control�
 
 #### Version History
 
+2021/1/14:
+ * 发布iPhone2Sim V1.0.0；
+ * 1.免费开放iPhone2Sim一键克隆手机App至模拟器；
+
 2021/1/12:
  * 发布V1.1.1（macOS/iOS）;
  * 1.添加iPhone2Sim插件，支持一键解密Macho至缓存文件（Dec2AD）;
