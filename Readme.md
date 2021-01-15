@@ -105,6 +105,10 @@ A：1.使用如下命令重新签一下名，然后首次使用时按住Control�
 
 #### Version History
 
+2021/1/15:
+ * 发布V1.1.2（macOS/iOS）;
+ * 1.修复FAT MachO加载崩溃的问题;
+
 2021/1/14:
  * 发布iPhone2Sim V1.0.0；
  * 1.免费开放iPhone2Sim一键克隆手机App至模拟器；
