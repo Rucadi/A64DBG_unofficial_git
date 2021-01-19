@@ -111,6 +111,10 @@ A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/
 #### Version History
 
 2021/1/19:
+ * 发布iPhone2Sim V1.0.1；
+ * 1.修复decache/iOS目录不存在时Dec2AD/Clone2Sim失败的问题；
+
+2021/1/19:
  * 发布V1.2.0;
  * 1.修复远程模块下载失败界面不更新的问题；
  * 2.修复调试结束后模块卸载内存泄漏的问题；
