@@ -101,9 +101,29 @@ A：1.使用如下命令重新签一下名，然后首次使用时按住Control�
    2.推荐使用git clone --depth=1的方式下载，这样以后可以通过git pull的方式更新，
    方便快捷不容易出错；
 ```
+```
+Q：iOS usbmuxd端口转发程序使用哪个命令行接口？
 
+A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/tcprelay.py；
+   或者按照该接口文件封装一个脚本配置给A64Dbg；
+```
 
 #### Version History
+
+2021/1/19:
+ * 发布V1.2.0;
+ * 1.修复远程模块下载失败界面不更新的问题；
+ * 2.修复调试结束后模块卸载内存泄漏的问题；
+ * 3.修复File/Launch启动后模块列表不全的问题；
+ * 4.添加iOS usb端口映射支持；
+ * 5.添加iOS launch app支持；
+ * 6.添加信息窗口显示最后四行日志的支持；
+ * 7.添加dp lldb-expr、dis lldb-expr、asm窗口命令；
+ * 8.添加adb/usbmux端口转发程序配置;
+ * 9.添加1/2/4/8字节watchpoint类型；
+ * 10.添加静态文件地址拷贝；
+ * 11.优化无符号文件函数分析功能；
+ * 12.删除静态文件补丁和反汇编功能;
 
 2021/1/15:
  * 发布V1.1.2（macOS/iOS）;
