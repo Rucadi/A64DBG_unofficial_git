@@ -1,0 +1,8 @@
+#! /system/bin/sh
+if [ $# == 0 ]; then
+	port='30333'
+else
+	port=$1
+fi
+echo Running lidadbg server at port $port
+"$(dirname "${BASH_SOURCE[0]}")"/x86_64/lldb-server platform --server --listen *:$port

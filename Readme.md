@@ -2,7 +2,7 @@
 
 #### Description
 
-An arm64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
+An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
  
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
  * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
@@ -109,6 +109,14 @@ A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/
 ```
 
 #### Version History
+
+2021/1/24:
+ * 发布V1.3.0;
+ * 1.修复反汇编窗口垂直滚动条位置不正确的问题；
+ * 2.修复elf反汇编内容错误的问题；
+ * 3.修复分析section损坏的elf文件崩溃的问题；
+ * 4.添加macOS/Android/模拟器-arm/x86/x64调试支持；
+ * 5.优化调试启动初始化逻辑；
 
 2021/1/19:
  * 发布iPhone2Sim V1.0.1；
