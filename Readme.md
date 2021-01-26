@@ -110,6 +110,11 @@ A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/
 
 #### Version History
 
+2021/1/26:
+ * 发布V1.3.1；
+ * 1.修复64位文件jump addr崩溃的问题；
+ * 2.修复Windows地址格式化4字节的问题；
+
 2021/1/24:
  * 发布V1.3.0;
  * 1.修复反汇编窗口垂直滚动条位置不正确的问题；
