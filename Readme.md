@@ -41,7 +41,7 @@ Debugger Server:
 scp A64Dbg/a64dbg-server.deb root@ip:/tmp/
 ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.deb
 ```
- * Android user: push [a64dbg-server](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server) to Android Device
+ * Android user: push [a64dbg-server-arm64](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64) to Android Device
 ```
 adb push A64Dbg/a64dbg-server /data/local/tmp/
 adb shell chmod -R 755 /data/local/tmp/a64dbg-server/

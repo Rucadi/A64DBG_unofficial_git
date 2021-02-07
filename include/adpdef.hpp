@@ -18,7 +18,7 @@
 #ifndef __ADPDEF_H__
 #define __ADPDEF_H__
 
-#define __ADP_VERSION__ "1.0.0"
+#define __ADP_VERSION__ "1.0.1"
 #define __ADP_CDECL__ extern "C"
 
 // windows definition
@@ -42,7 +42,7 @@ typedef long adpint;
 
 // api entry error code definition
 enum adp_error_t {
-  adp_err_ok = 0,      // success
+  adp_err_ok,          // success
   adp_err_failed,      // failed
   adp_err_canceled,    // canceled
   adp_err_param,       // bad parameter
@@ -77,23 +77,43 @@ enum adp_event_t {
 
   // event with Input
   // input.ptr is adp_module_t*
-  decl_event_input(module_analyzed, ptr,
-                   "tell plugin finished analyzing a module"),
+  decl_event_input(module_analyzed, ptr, "tell plugin finished analyzing a module"),
 
   // event for Result
   decl_event_result(version, str_const, "ask this plugin for its sdk version"),
-  decl_event_result(menuname, str_const,
-                    "ask this plugin for its plugin menu name"),
+  decl_event_result(menuname, str_const, "ask this plugin for its plugin menu name"),
   // ptr.p0 should be adp's self version string
   // ptr.p1 should be adp's description
-  decl_event_result(adpinfo, ptr,
-                    "ask this plugin for its self version and description"),
+  decl_event_result(adpinfo, ptr, "ask this plugin for its self version and description"),
 
   // event with Input for Result
   // currently nothing
 
   //...
   // Tell me, what the extra event do you want ?
+};
+
+// added by v1.0.1
+enum adp_platform_t {
+  adp_local_mac,                 // Local macOS/Simulator
+  adp_remote_ios,                // Remote iOS
+  adp_remote_android,            // Remote Android
+  adp_local_vp_ios,              // Local VP iOS Simulator
+  adp_remote_vp_android,         // Remote VP Android Emulator
+  adp_local_unicornvm,           // Local UnicornVM
+  adp_remote_unicornvm_ios,      // Remote UnicornVM iOS
+  adp_remote_unicornvm_android,  // Remote UnicornVM Android
+  adp_invalid_platform,
+};
+
+// added by v1.0.1
+enum adp_arch_t {
+  adp_arch_unsupport,
+  adp_arch_armv5te,
+  adp_arch_arm,
+  adp_arch_arm64,
+  adp_arch_x86,
+  adp_arch_x64,
 };
 
 // bytes definition
@@ -144,10 +164,10 @@ struct adp_api_t {
   // make cpu window goto the specified address
   void (*gotoCPUAdderss)(adpint addr);
   // iterate modules
-  void (*travelModule)(adp_error_t (*handler)(const adp_module_t *module));
+  void (*travelModule)(void *context, adp_error_t (*handler)(void *context, const adp_module_t *module));
   // iterate functions
-  void (*travelFunc)(const adp_module_t *module,
-                     adp_error_t (*handler)(const adp_func_t *func));
+  void (*travelFunc)(void *context, const adp_module_t *module,
+                     adp_error_t (*handler)(void *context, const adp_func_t *func));
   // check whether is debugging
   adpint (*isDebugging)();
   // make dump window goto the specified address, 0,1,2
@@ -166,10 +186,10 @@ struct adp_api_t {
   // ask user to select a path
   adp_error_t (*inputPath)(char *path, adpint size, adpint isdir,
                            adpint isopen);
-  // disassemble an arm64 opcode
-  adp_error_t (*disassemble)(unsigned opcode, char *asmcode, adpint asmsize);
-  // assemble an arm64 asm instruction
-  adp_error_t (*assemble)(const char *asmcode, unsigned *opcode);
+  // disassemble an opcode
+  adp_error_t (*disassemble)(const void *opcode, char *asmcode, adpint asmsize);
+  // assemble an asm instruction
+  adp_error_t (*assemble)(const char *asmcode, void *opcode);
   // pickup current register value like x0-x29,lr,sp,pc
   adp_error_t (*getRegister)(const char *regname, adpint *regvalue);
   // set register value
@@ -206,6 +226,16 @@ struct adp_api_t {
   void (*attach)(adpint pid);
   // detach from current debugee
   void (*detach)();
+  /*
+  added by v1.0.1
+  */
+  // get the current debugee platform
+  adp_platform_t (*curPlatform)();
+
+  // get the current debugee machine arch
+  adp_arch_t (*curArch)();
+  // get the current commander
+  adpint (*curCommander)();
   //...
   // Tell me, what the extra api do you want ?
 };
