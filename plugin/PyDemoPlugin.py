@@ -5,11 +5,15 @@ import os
 def attach_calculator(name):
     procs = command2('plat shell ps -ef|grep %s' % (name))
     lines = procs.split('\n')
-    items = lines[0].lstrip().split(' ')
-    pid = int(itesm[1])
-    if pid:
-        attach(pid)
-        return True
+    for l in lines:
+        if l.find(name) < 0:
+            continue
+        print('Checking line: %s' % (l))
+        items = l.lstrip().split(' ')
+        pid = int(items[1])
+        if pid:
+            attach(pid)
+            return True
     print(procs)
     return False
 
