@@ -10,10 +10,15 @@ def attach_calculator(name):
             continue
         print('Checking line: %s' % (l))
         items = l.lstrip().split(' ')
-        pid = int(items[1])
-        if pid:
-            attach(pid)
-            return True
+        if (items[0] == 'root' or items[0] == 'shell'):
+            continue
+        for i in range(1, len(items)):
+            if len(items[i]):
+                pid = int(items[i])
+                if pid:
+                    attach(pid)
+                    return True
+                break
     print(procs)
     return False
 
