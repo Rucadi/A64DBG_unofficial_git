@@ -1,8 +1,15 @@
+'''
+This is really a very simple a64dbg python adp demo.
+'''
+# import basic adp definition like error/event code
 from adpdef import *
+# import adp api entries
 from adp import *
 import os
 
+# auto attach the Calculator process
 def attach_calculator(name):
+    # execute an lldb command to list the calcular process
     procs = command2('plat shell ps -ef|grep %s' % (name))
     lines = procs.split('\n')
     for l in lines:
@@ -22,13 +29,16 @@ def attach_calculator(name):
     print(procs)
     return False
 
+# a64dbg debugengine event for python plugin
 def adp_on_event(args):
     event = args[adp_inkey_type]
+    # user clicked the plugin's main menu
     if event == adp_event_main_menu:
         plat = curPlatform()
         print('Current platform is %d.' % (plat))
         if plat == adp_local_mac or plat == adp_local_unicornvm:
             if not attach_calculator('Calculator'):
+                # ask user to select a file to debug
                 debugee = inputPath()
                 if debugee and os.path.exists(debugee):
                     start(debugee)
@@ -37,8 +47,10 @@ def adp_on_event(args):
         elif plat == adp_remote_android or plat == adp_remote_unicornvm_android:
             attach_calculator('calculator')
         return success()
+    # ask for plugin's menu name
     if event == adp_event_menuname:
         return success('PyDemoPlugin')
+    # ask for plugins's version and descripton 
     if event == adp_event_adpinfo:
         return success(('0.1.0', 'This is a simple AD python plugin.'))
     # print(args)
