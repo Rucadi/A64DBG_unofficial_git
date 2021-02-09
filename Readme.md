@@ -33,6 +33,7 @@ Plugin DevTool:
 
 Official Plugin:
  * iPhone2Sim: one click helper for A64Dbg and Simulator, dependent on [Textobot](https://gitee.com/geekneo/Textobot);
+ * Python3: builtin adp python framework;
 
 Debugger Server:
 
@@ -107,81 +108,6 @@ Q：iOS usbmuxd端口转发程序使用哪个命令行接口？
 A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/tcprelay.py；
    或者按照该接口文件封装一个脚本配置给A64Dbg；
 ```
-
-#### Version History
-
-2021/1/26:
- * 发布V1.3.1；
- * 1.修复64位文件jump addr崩溃的问题；
- * 2.修复Windows地址格式化4字节的问题；
-
-2021/1/24:
- * 发布V1.3.0;
- * 1.修复反汇编窗口垂直滚动条位置不正确的问题；
- * 2.修复elf反汇编内容错误的问题；
- * 3.修复分析section损坏的elf文件崩溃的问题；
- * 4.添加macOS/Android/模拟器-arm/x86/x64调试支持；
- * 5.优化调试启动初始化逻辑；
-
-2021/1/19:
- * 发布iPhone2Sim V1.0.1；
- * 1.修复decache/iOS目录不存在时Dec2AD/Clone2Sim失败的问题；
-
-2021/1/19:
- * 发布V1.2.0;
- * 1.修复远程模块下载失败界面不更新的问题；
- * 2.修复调试结束后模块卸载内存泄漏的问题；
- * 3.修复File/Launch启动后模块列表不全的问题；
- * 4.添加iOS usb端口映射支持；
- * 5.添加iOS launch app支持；
- * 6.添加信息窗口显示最后四行日志的支持；
- * 7.添加dp lldb-expr、dis lldb-expr、asm窗口命令；
- * 8.添加adb/usbmux端口转发程序配置;
- * 9.添加1/2/4/8字节watchpoint类型；
- * 10.添加静态文件地址拷贝；
- * 11.优化无符号文件函数分析功能；
- * 12.删除静态文件补丁和反汇编功能;
-
-2021/1/15:
- * 发布V1.1.2（macOS/iOS）;
- * 1.修复FAT MachO加载崩溃的问题;
-
-2021/1/14:
- * 发布iPhone2Sim V1.0.0；
- * 1.免费开放iPhone2Sim一键克隆手机App至模拟器；
-
-2021/1/12:
- * 发布V1.1.1（macOS/iOS）;
- * 1.添加iPhone2Sim插件，支持一键解密Macho至缓存文件（Dec2AD）;
- * 2.修复iOS缓存文件重复下载的问题;
-
-2021/1/10:
- * 发布V1.1.0;
- * 1.添加ADPlugin插件体系；
- * 2.添加adpdef.hpp插件开发sdk；
- * 3.添加两个插件样例工程；
- * 4.添加调试命令行程序启动参数输入；
- * 5.修复Dump/SDump窗口Follow QWord内存地址错误的问题；
-
-2021/1/5:
- * 发布V1.0.1;
- * 1.修复了对带调试符号的模块下断点崩溃的问题；
- * 2.修复了Windows跳转地址表达式错误的问题；
- * 3.修复了初始化调试模块时偶尔崩溃的问题；
- * 4.修复调试状态下File/Disasm file无法正常反汇编的问题；
- * 5.修复tbz/tbnz跳转判定错误的问题；
- * 6.修复非CPU模块函数列表双击回车无法跳转至对应函数的问题；
- * 7.修复attach失败后进入假调试状态的问题；
- * 8.修复反复attach/detach状态维护错误的问题；
- * 9.十六进制显示参数窗口值；
- * 10.远程调试模式CPU窗口采用文件__text内容进行反汇编；
-
-2021/1/1:
- * 发布V1.0.0；
-
-
-#### Known Issue
-
 
 
 #### Screenshot
