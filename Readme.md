@@ -11,7 +11,7 @@ An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg 
  * Script is based on [Python](https://www.python.org/);
  * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
 
-Debugger:
+[Debugger Version](https://gitee.com/geekneo/A64Dbg/blob/master/Version.md):
 
  * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win);
  * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac);
