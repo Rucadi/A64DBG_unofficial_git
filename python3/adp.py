@@ -23,6 +23,9 @@ import register
 import importlib
 from adpdef import *
 
+# current version
+adpy_version = '1.0.1'
+
 # register instance
 arm = register.arm()
 arm64 = register.arm64()
@@ -283,7 +286,7 @@ def setConfig(sect, key, value):
 # adp_error_t (*stepDebugee)(adpint isinto)
 def stepDebugee(isinto):
     """
-    step debugging like lldb's ni/si command.
+    step debuggee like lldb's ni/si command.
     """
     return api_proc('stepDebugee', isinto)
 
@@ -417,8 +420,8 @@ def attach(pid):
 def detach():
     """
     detach from current debugee.
-    if the debugging is running, will keep it running.
-    if the debugging is stopped by lldb, will terminate it.
+    if the debuggee is running, will keep it running.
+    if the debuggee was stopped by lldb, will terminate it.
     """
     api_proc('detach')
 
@@ -499,6 +502,26 @@ def curArch():
     adp_arch_x64 = 5
     """
     return api_proc_result('curArch')
+
+# adp_error_t (*addrModule)(adpint addr, adp_module_t *module);
+def addrModule(addr):
+    """
+    get the module belongs to addr
+    """
+    return api_proc_result('addrModule', addr)
+
+def addrmod(addr):
+    """
+    wrapper for addrModule
+    """
+    return addrModule(addr)
+
+#adpint (*nextPC)();
+def nextpc():
+    """
+    get the next pc address
+    """
+    return api_proc_result('nextPC')
 
 # event result wrapper
 def adp_result(err, value = None):

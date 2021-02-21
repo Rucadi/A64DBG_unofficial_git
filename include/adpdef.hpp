@@ -18,7 +18,7 @@
 #ifndef __ADPDEF_H__
 #define __ADPDEF_H__
 
-#define __ADP_VERSION__ "1.0.1"
+#define __ADP_VERSION__ "1.0.2"
 #define __ADP_CDECL__ extern "C"
 
 // windows definition
@@ -132,7 +132,13 @@ struct adp_pair_t {
 struct adp_module_t {
   const char *path;
   // whether loaded its adb file
-  adpint hasadb;
+  int hasadb;
+  /*
+   * added by adp v1.0.2
+   */
+  // whether a system module
+  int issys;
+
   adpint start;
   // note, it's not the real end address, usually it's the next module's start
   adpint end;
@@ -149,7 +155,7 @@ struct adp_func_t {
 // api definition
 struct adp_api_t {
   /*
-   * add by adp v1.0.0
+   * added by adp v1.0.0
    */
   // get current A64Dbg's version
   const char *(*version)();
@@ -227,15 +233,23 @@ struct adp_api_t {
   // detach from current debugee
   void (*detach)();
   /*
-  added by v1.0.1
-  */
+   * added by v1.0.1
+   */
   // get the current debugee platform
   adp_platform_t (*curPlatform)();
-
   // get the current debugee machine arch
   adp_arch_t (*curArch)();
   // get the current commander
   adpint (*curCommander)();
+  /*
+   * added by v1.0.2
+   */
+  // get the module belongs to addr
+  // NOTE: you should free(module->path)
+  adp_error_t (*addrModule)(adpint addr, adp_module_t *module);
+  // get the next pc address
+  adpint (*nextPC)();
+
   //...
   // Tell me, what the extra api do you want ?
 };

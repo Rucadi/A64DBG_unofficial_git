@@ -40,7 +40,7 @@ adp_arch_arm64 = 3
 adp_arch_x86 = 4
 adp_arch_x64 = 5
 
-adp_version = '1.0.1'
+adp_version = '1.0.2'
 
 adp_err_ok = 0 # success
 adp_err_failed = 1 # failed
