@@ -7,6 +7,10 @@ from adpdef import *
 from adp import *
 import os
 
+# adcpp output handler for api send2py
+def adcpp_output(data):
+    print(data)
+
 # auto attach the Calculator process
 def attach_calculator(name):
     # execute an lldb command to list the calcular process
@@ -53,5 +57,18 @@ def adp_on_event(args):
     # ask for plugins's version and descripton 
     if event == adp_event_adpinfo:
         return success(('0.1.0', 'This is a simple AD python plugin.'))
+    # run c/c++ code inside debugee
+    if event == adp_event_debug_initialized:
+        # demo for adcpp api
+        plat = curPlatform()
+        if plat == adp_local_unicornvm or \
+            plat == adp_remote_unicornvm_ios or \
+            plat == adp_remote_unicornvm_android:
+            runadc(
+            '''
+            printf("Hello world from PyDemoPlugin's runadc.\\n");
+            send2py("adcpp_output", "Hello, ADCpp. My pid in %d.\\n", getpid());
+            ''')
+            return success()
     # print(args)
     return failed(adp_err_unimpl)

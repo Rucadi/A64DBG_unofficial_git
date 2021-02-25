@@ -18,7 +18,7 @@
 #ifndef __ADPDEF_H__
 #define __ADPDEF_H__
 
-#define __ADP_VERSION__ "1.0.2"
+#define __ADP_VERSION__ "1.0.3"
 #define __ADP_CDECL__ extern "C"
 
 // windows definition
@@ -88,7 +88,14 @@ enum adp_event_t {
 
   // event with Input for Result
   // currently nothing
-
+  
+  /*
+   * added by adp v1.0.3
+   */
+  // if val == 0 then ptr is a valid string pointer
+  // else buf is valid
+  // the str is a user specified python3 receiver function name
+  decl_event_input(adcpp_output, val/str/buf/ptr, "tell plugin debugee side adcpp output"),
   //...
   // Tell me, what the extra event do you want ?
 };
@@ -249,7 +256,11 @@ struct adp_api_t {
   adp_error_t (*addrModule)(adpint addr, adp_module_t *module);
   // get the next pc address
   adpint (*nextPC)();
-
+  /*
+   * added by v1.0.3
+   */
+  // run the c/c++ code with adcpp
+  void (*runADCpp)(const char *code);
   //...
   // Tell me, what the extra api do you want ?
 };

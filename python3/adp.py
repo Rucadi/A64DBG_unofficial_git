@@ -24,7 +24,7 @@ import importlib
 from adpdef import *
 
 # current version
-adpy_version = '1.0.1'
+adpy_version = '1.0.2'
 
 # register instance
 arm = register.arm()
@@ -523,6 +523,19 @@ def nextpc():
     """
     return api_proc_result('nextPC')
 
+# c/c++ expressions or path
+def runADCpp(code):
+    """
+    run a c/c++ expression or source file inside debugee with UnicornVM.
+    """
+    api_proc('runADCpp', code)
+
+def runadc(code):
+    """
+    wrapper for runADCpp
+    """
+    return runADCpp(code)
+
 # event result wrapper
 def adp_result(err, value = None):
     """
@@ -562,13 +575,20 @@ def adp_on_event(args):
         if module is None:
             return adp_result(adp_err_failed)
         usradp[name] = module
-    # invoke user plugin's event handler
-    handler = module.adp_on_event
-    if handler is None:
-        return adp_result(adp_err_unimpl)
     # pre-process event
     event = args[adp_inkey_type]
     if event == adp_event_version:
         return adp_result(adp_err_ok, adp_version)
+    if event == adp_event_adcpp_output:
+        # invoke user plugin's adcpp output handler
+        adcpp_handler = module.__dict__.get(args[adp_inkey_extra])
+        if adcpp_handler is None:
+            return adp_result(adp_err_unimpl)
+        adcpp_handler(args[adp_inkey_value])
+        return adp_result(adp_err_ok)
+    # invoke user plugin's event handler
+    handler = module.adp_on_event
+    if handler is None:
+        return adp_result(adp_err_unimpl)
     # pass event to user plugin's handler
     return handler(args)

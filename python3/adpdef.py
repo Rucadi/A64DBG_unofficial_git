@@ -20,6 +20,7 @@
 adp_inkey_name = 'name' # plugin module name
 adp_inkey_type = 'event' # event type
 adp_inkey_value = 'value' # event payload
+adp_inkey_extra = 'extra' # extra argument depend on event type
 adp_outkey_error = 'error' # return error code
 adp_outkey_result = 'result' # return value
 
@@ -40,7 +41,7 @@ adp_arch_arm64 = 3
 adp_arch_x86 = 4
 adp_arch_x64 = 5
 
-adp_version = '1.0.2'
+adp_version = '1.0.3'
 
 adp_err_ok = 0 # success
 adp_err_failed = 1 # failed
@@ -70,4 +71,4 @@ adp_event_module_analyzed = 7 # tell plugin finished analyzing a module
 adp_event_version = 8 # ask this plugin for its sdk version
 adp_event_menuname = 9 # ask this plugin for its plugin menu name
 adp_event_adpinfo = 10 # ask this plugin for its self version and description
-
+adp_event_adcpp_output = 11 # tell plugin debugee side adcpp output
