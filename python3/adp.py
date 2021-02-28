@@ -458,6 +458,12 @@ def runret():
     """
     command('rtr')
 
+def runbbe():
+    """
+    run to basicblock end or call.
+    """
+    command('rtbbe')
+
 # python expression or path
 def runPython(py):
     """
