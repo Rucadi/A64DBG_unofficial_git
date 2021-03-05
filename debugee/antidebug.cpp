@@ -42,7 +42,9 @@ static bool am_I_being_debugged(void) {
 #endif
 
 int main(int argc, const char *argv[]) {
-  anti_debug();
+  if (!getenv("NO_ANTIDBG")) {
+    anti_debug();
+  }
 
   // modify register to continue
   for (int i = argc; i < 10000000; i++) {
