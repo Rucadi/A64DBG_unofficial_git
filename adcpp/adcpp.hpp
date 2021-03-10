@@ -25,10 +25,11 @@
  * standard headers
  */
 // pre-include standard c headers
+#include <stddef.h>
 #include <ctype.h>   // Functions to determine the type contained in character data
 #include <errno.h>	 // Macros reporting error conditions
 #include <float.h>	 // Limits of float types
-#include <inttypes.h>// (C99)	Format conversion of integer types
+#include <inttypes.h>// Format conversion of integer types
 #include <limits.h>	 // Sizes of basic types
 #include <locale.h>	 // Localization utilities
 #include <math.h>	 // Common mathematics functions
@@ -62,6 +63,14 @@
 #include <map>
 #else
 // android only supports pure c/c++
+#include <jni.h>
+#include <android/log.h>
+
+// get the android jvm instance
+JavaVM *current_jvm();
+
+// get the current JNIEnv attached by current thread
+JNIEnv *current_jenv();
 #endif
 
 /*

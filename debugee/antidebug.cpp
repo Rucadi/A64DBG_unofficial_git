@@ -2,13 +2,14 @@
 #include <unistd.h>
 #include <dlfcn.h>
 #include <stdio.h>
+
+#if __APPLE__
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-#if __APPLE__
 typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
 
-void anti_debug() {
+static void anti_debug() {
   ptrace_ptr_t ptrace_ptr = (ptrace_ptr_t)dlsym(RTLD_SELF, "ptrace");
   ptrace_ptr(31, 0, 0, 0); // PTRACE_DENY_ATTACH = 31
 }
@@ -39,6 +40,18 @@ static bool am_I_being_debugged(void) {
   return ( (info.kp_proc.p_flag & P_TRACED) != 0 );
 }
 #else
+static void anti_debug() {}
+
+// Returns true if the current process is being debugged (either
+// running under the debugger or has a debugger attached post facto).
+static bool am_I_being_debugged(void) {
+  FILE *fp = fopen("/proc/self/status", "r");
+  char status[128];
+  size_t rd = fread(status, 1, sizeof(status) - 1, fp);
+  status[rd] = 0;
+  fclose(fp);
+  return strstr(status, "TracerPid:\t0") == nullptr;
+}
 #endif
 
 int main(int argc, const char *argv[]) {
@@ -48,8 +61,11 @@ int main(int argc, const char *argv[]) {
 
   // modify register to continue
   for (int i = argc; i < 10000000; i++) {
-    printf("You should change the register to quit this infinite loop %d.\nI'm being debugged(%s).\n", 
-      i, am_I_being_debugged() ? "true" : "false");
+    printf(
+      "You should change the register to quit this infinite loop %d.\n"
+      "I'm being debugged(%s).\n", 
+      i, 
+      am_I_being_debugged() ? "true" : "false");
     sleep(2);
   }
 
