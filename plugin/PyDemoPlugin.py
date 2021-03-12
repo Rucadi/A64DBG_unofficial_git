@@ -67,7 +67,7 @@ def adp_on_event(args):
             runadc(
             '''
             printf("Hello world from PyDemoPlugin's runadc.\\n");
-            send2py("adcpp_output", "Hello, ADCpp. My pid in %d.\\n", getpid());
+            str2py("adcpp_output", "Hello, ADCpp. My pid in %d.\\n", getpid());
             ''')
             return success()
     # print(args)
