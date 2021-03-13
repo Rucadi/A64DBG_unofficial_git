@@ -116,3 +116,5 @@ dmypy.json
 
 obj/
 .DS_Store
+*.o
+*.bc

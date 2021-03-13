@@ -1,7 +1,7 @@
-#include <iostream>
 #include <unistd.h>
 #include <dlfcn.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #if __APPLE__
 #include <sys/types.h>
