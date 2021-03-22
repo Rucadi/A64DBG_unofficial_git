@@ -175,6 +175,7 @@ struct adcpp_api_t {
 // get the adcpp api instance from uvmdbg runtime
 const adcpp_api_t *uvmdbg_adcapi();
 
+#if !ADCPP_IMPL
 /*
  * api wrappers
  */
@@ -199,6 +200,7 @@ __ADCPP_API__ JNIEnv *current_jenv() {
   return adcapi()->current_jenv();
 }
 #endif
+#endif // end of !ADCPP_IMPL
 
 // some register wrapper
 #if __arm__
