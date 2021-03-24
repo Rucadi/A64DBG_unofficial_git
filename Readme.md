@@ -61,9 +61,9 @@ Current Status:
 |Remote Android|基于lldb-server的传统Android远程调试|Yes|Free|
 |Local VP iOS Simulator|基于arm64翻译器的跨架构调试，比如在x64 macOS调试arm64的iOS程序|No|Buy|
 |Remote VP Android Emulator|基于arm64翻译器的跨架构调试，比如在x64 Windows调试arm64的Android程序|No|Buy|
-|Local UnicornVM|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的本地调试，比如在x64桌面调试arm64的代码|No|Buy|
-|Remote UnicornVM iOS|基于[UnicornVM-iOS](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在iOS UnicornVM虚拟机里面|No|Buy|
-|Remote UnicornVM Android|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在Android UnicornVM虚拟机里面|No|Buy|
+|Local UnicornVM|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的本地调试，比如在x64桌面调试arm64的代码|Yes|Buy|
+|Remote UnicornVM iOS|基于[UnicornVM-iOS](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在iOS UnicornVM虚拟机里面|Yes|Buy|
+|Remote UnicornVM Android|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在Android UnicornVM虚拟机里面|Yes|Buy|
 
 Follow us for update or bug report:
 

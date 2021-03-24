@@ -1,5 +1,19 @@
 #### Version History
 
+2021/3/24:
+ * 发布V1.6.0;
+ * 1.添加UnicornVM arm/arm64虚拟化调试模式的支持；
+ * 2.添加UVMTracer虚拟化高性能Trace的支持；
+ * 3.添加ADCpp脚本化ASM/C/C++/ObjC的支持；
+ * 4.添加Run2BBE虚拟化块级调试的支持；
+ * 5.添加寄存器函数信息显示；
+ * 6.添加Launch APK的调试支持；
+ * 7.修复macOS版本依赖Xcode Python3 RPATH硬编码的问题；
+ * 8.减少LLDB模式Trace状态更新的类目提高Trace性能；
+ * 9.更新adp至v1.0.3；
+ * 10.更新macOS lldb至13.0git；
+ * 11.其他若干小问题修复；
+
 2021/2/22:
  * 发布V1.5.0;
  * 1.添加arm/arm64/x86/x64 trace的支持；
