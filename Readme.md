@@ -108,6 +108,15 @@ Q：iOS usbmuxd端口转发程序使用哪个命令行接口？
 A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/tcprelay.py；
    或者按照该接口文件封装一个脚本配置给A64Dbg；
 ```
+```
+Q：Windows平台lidadbg-server启动报错的原因？
+
+A：在Windows平台如果你是用git clone的方式下载A64Dbg软件包的，手机端执行服务程序可能会报错：
+      angler:/data/local/tmp/a64dbg-server-arm # ./lidadbg-server
+      /system/bin/sh: ./lidadbg-server: No such file or directory
+   报错的原因是git对脚本lidadbg-server添加了'\r'字符，导致sh无法解析该脚本。解决办法：
+      git config --global core.autocrlf input，禁止其添加'\r'字符；
+```
 
 
 #### Screenshot
