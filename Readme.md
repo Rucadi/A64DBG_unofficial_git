@@ -3,7 +3,8 @@
 #### Description
 
 An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
-An arm/arm64 virtualization debugger based on UnicornVM for macOS/iOS/Android.
+
+An arm/arm64 virtualization debugger(uvmdbg) based on UnicornVM for macOS/iOS/Android.
  
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
  * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
