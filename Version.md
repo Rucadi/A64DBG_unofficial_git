@@ -1,5 +1,12 @@
 #### Version History
 
+2021/3/26:
+ * 发布V1.6.2;
+ * 1.修复分析ELF静态基址错误导致断点位置错误的问题；
+ * 注意：1.6.1及之前的版本缓存的分析数据库基址是错误的，更新至1.6.2后，需要删除之前的分析数据库：
+ * macOS：~/A64Dbg/database/*.adb；
+ * Windows：SysDrive:\User\xxx\A64Dbg\database\*.adb；
+
 2021/3/25:
  * 发布V1.6.1;
  * 1.修复模块列表加载加密elf崩溃的问题；
