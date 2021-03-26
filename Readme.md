@@ -3,6 +3,7 @@
 #### Description
 
 An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
+An arm/arm64 virtualization debugger based on UnicornVM for macOS/iOS/Android.
  
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
  * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
@@ -10,6 +11,7 @@ An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg 
  * Assembler/Disassembler is based on [LLVM](http://llvm.org/);
  * Script is based on [Python](https://www.python.org/);
  * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
+ * UVMEngine is developed by [YunYoo](http://yunyoo.cn/);
 
 [Debugger Version](https://gitee.com/geekneo/A64Dbg/blob/master/Version.md):
 
@@ -42,14 +44,23 @@ Debugger Server:
 scp A64Dbg/a64dbg-server.deb root@ip:/tmp/
 ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.deb
 ```
+ * iOS uvmdbg user: install [](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server.uvm.deb) to iDevice
+```
+scp A64Dbg/a64dbg-server.uvm.deb root@ip:/tmp/
+ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.uvm.deb
+```
  * Android user: push [a64dbg-server-arm64](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64) to Android Device
 ```
-adb push A64Dbg/a64dbg-server /data/local/tmp/
-adb shell chmod -R 755 /data/local/tmp/a64dbg-server/
-cd /data/local/tmp/a64dbg-server; ./lidadbg-server
+adb push A64Dbg/a64dbg-server-arch /data/local/tmp/
+adb shell chmod -R 755 /data/local/tmp/a64dbg-server-arch/
+cd /data/local/tmp/a64dbg-server-arch; ./lidadbg-server
 ```
 ```
 adb forward tcp:30333 tcp:30333
+```
+ * Android uvmdbg user: push [a64dbg-server-arm64.uvm](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64.uvm) to Android Device
+```
+adb push A64Dbg/a64dbg-server-arch.uvm /data/local/tmp/
 ```
 
 Current Status:
