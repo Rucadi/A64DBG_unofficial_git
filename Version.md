@@ -1,4 +1,11 @@
 #### Version History
+2021/3/30:
+ * 发布V1.6.4;
+ * 1.添加内存窗口主动refresh的功能，5s自动更新一次；
+ * 2.修复armv7 neon寄存器未更新的问题；
+ * 3.修复uvmdbg armv7模块刷新时可能导致debugee崩溃的问题； 
+ * 4.修复uvmdbg android模式解析local ipv4错误的问题；
+ * 5.修复某些情况下判断模块类型崩溃的问题；
 
 2021/3/29:
  * 发布V1.6.3;
