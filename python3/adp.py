@@ -412,8 +412,9 @@ def command2(cmd):
 def remoteShellCommand(cmd):
     """
     execute a remote shell command without result.
+    note: DO NOT EXECUTE A LONG TIME COMMAND, it will make remote lldb-server signal timeout.
     """
-    return lldbCommand('plat shell ' + cmd + '&')
+    return lldbCommand('plat shell ' + cmd)
 
 def shell(cmd):
     """
