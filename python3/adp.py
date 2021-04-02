@@ -24,7 +24,7 @@ import importlib
 from adpdef import *
 
 # current version
-adpy_version = '1.0.2'
+adpy_version = '1.0.3'
 
 # register instance
 arm = register.arm()
@@ -408,6 +408,31 @@ def command2(cmd):
     wrapper for lldbCommandResult.
     """
     return lldbCommandResult(cmd)
+
+def remoteShellCommand(cmd):
+    """
+    execute a remote shell command without result.
+    """
+    return lldbCommand('plat shell ' + cmd + '&')
+
+def shell(cmd):
+    """
+    wrapper for remoteShellCommand.
+    """
+    return remoteShellCommand(cmd)
+
+def remoteShellCommandResult(cmd):
+    """
+    execute a remote shell command, return the string output.
+    note: DO NOT EXECUTE A LONG TIME COMMAND, it will make remote lldb-server signal timeout.
+    """
+    return lldbCommandResult('plat shell ' + cmd)
+
+def shell2(cmd):
+    """
+    wrapper for remoteShellCommandResult.
+    """
+    return remoteShellCommandResult(cmd)
 
 # void (*attach)(adpint pid)
 def attach(pid):
