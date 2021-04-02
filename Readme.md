@@ -3,6 +3,8 @@
 #### Description
 
 An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
+
+An arm/arm64 virtualization debugger(uvmdbg) based on UnicornVM for macOS/iOS/Android.
  
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
  * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
@@ -10,6 +12,7 @@ An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg 
  * Assembler/Disassembler is based on [LLVM](http://llvm.org/);
  * Script is based on [Python](https://www.python.org/);
  * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
+ * UVMEngine is developed by [YunYoo](http://yunyoo.cn/);
 
 [Debugger Version](https://gitee.com/geekneo/A64Dbg/blob/master/Version.md):
 
@@ -42,14 +45,23 @@ Debugger Server:
 scp A64Dbg/a64dbg-server.deb root@ip:/tmp/
 ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.deb
 ```
+ * iOS uvmdbg user: install [](https://gitee.com/geekneo/A64Dbg/blob/master/a64dbg-server.uvm.deb) to iDevice
+```
+scp A64Dbg/a64dbg-server.uvm.deb root@ip:/tmp/
+ssh root@ip dpkg -i --force-overwrite /tmp/a64dbg-server.uvm.deb
+```
  * Android user: push [a64dbg-server-arm64](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64) to Android Device
 ```
-adb push A64Dbg/a64dbg-server /data/local/tmp/
-adb shell chmod -R 755 /data/local/tmp/a64dbg-server/
-cd /data/local/tmp/a64dbg-server; ./lidadbg-server
+adb push A64Dbg/a64dbg-server-arch /data/local/tmp/
+adb shell chmod -R 755 /data/local/tmp/a64dbg-server-arch/
+cd /data/local/tmp/a64dbg-server-arch; ./lidadbg-server
 ```
 ```
 adb forward tcp:30333 tcp:30333
+```
+ * Android uvmdbg user: push [a64dbg-server-arm64.uvm](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64.uvm) to Android Device
+```
+adb push A64Dbg/a64dbg-server-arch.uvm /data/local/tmp/
 ```
 
 Current Status:
@@ -61,9 +73,9 @@ Current Status:
 |Remote Android|基于lldb-server的传统Android远程调试|Yes|Free|
 |Local VP iOS Simulator|基于arm64翻译器的跨架构调试，比如在x64 macOS调试arm64的iOS程序|No|Buy|
 |Remote VP Android Emulator|基于arm64翻译器的跨架构调试，比如在x64 Windows调试arm64的Android程序|No|Buy|
-|Local UnicornVM|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的本地调试，比如在x64桌面调试arm64的代码|No|Buy|
-|Remote UnicornVM iOS|基于[UnicornVM-iOS](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在iOS UnicornVM虚拟机里面|No|Buy|
-|Remote UnicornVM Android|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在Android UnicornVM虚拟机里面|No|Buy|
+|Local UnicornVM|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的本地调试，比如在x64桌面调试arm64的代码|Yes|Buy|
+|Remote UnicornVM iOS|基于[UnicornVM-iOS](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在iOS UnicornVM虚拟机里面|Yes|Buy|
+|Remote UnicornVM Android|基于[UnicornVM-V8](https://gitee.com/geekneo/VirtualCode)的远程调试，执行代码跑在Android UnicornVM虚拟机里面|Yes|Buy|
 
 Follow us for update or bug report:
 
@@ -107,6 +119,15 @@ Q：iOS usbmuxd端口转发程序使用哪个命令行接口？
 
 A：推荐使用https://github.com/TestStudio/usbmuxd/blob/master/python-client/tcprelay.py；
    或者按照该接口文件封装一个脚本配置给A64Dbg；
+```
+```
+Q：Windows平台lidadbg-server启动报错的原因？
+
+A：在Windows平台如果你是用git clone的方式下载A64Dbg软件包的，手机端执行服务程序可能会报错：
+      angler:/data/local/tmp/a64dbg-server-arm # ./lidadbg-server
+      /system/bin/sh: ./lidadbg-server: No such file or directory
+   报错的原因是git对脚本lidadbg-server添加了'\r'字符，导致sh无法解析该脚本。解决办法：
+      git config --global core.autocrlf input，禁止其添加'\r'字符；
 ```
 
 
