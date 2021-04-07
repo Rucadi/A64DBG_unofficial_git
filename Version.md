@@ -1,4 +1,13 @@
 #### Version History
+2021/4/2:
+ * 发布V1.6.5;
+ * 1.修复执行Python文件脚本报错的问题； 
+ * 2.修复uvmdbg同一个函数多个断点仅有一个起作用的问题；
+ * 3.修复uvmdbg attach初始化时debugee偶尔崩溃的问题；
+ * 4.修复adpy command2结果编码错误的问题；
+ * 5.修改uvmdbg调试线程初始状态为running；
+ * 6.添加shell api至adpy；
+
 2021/3/30:
  * 发布V1.6.4;
  * 1.添加内存窗口主动refresh的功能，5s自动更新一次；
