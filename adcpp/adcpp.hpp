@@ -18,7 +18,7 @@
 #ifndef __ADCPP_H__
 #define __ADCPP_H__
 
-#define __ADCPP_VERSION__ "1.0.0"
+#define __ADCPP_VERSION__ "1.0.1"
 #define __ADCPP_CDECL__ extern "C"
 
 // function with this prefix is the real user api
@@ -161,6 +161,10 @@ struct adcpp_api_t {
   
   // get the debugee thread register context, return null if there's no debugee thread
   const regctx_t *(*current_regs)();
+  
+  // hookers
+  void (*hook_inline)(const void *srcfn, const void *hooker, void **orig);
+  void (*hook_got)(const char *imagename, const char *funcname, const void *hooker);
 
 #if __APPLE__ // macOS/iOS
 #else // android
@@ -188,6 +192,13 @@ __ADCPP_API__ const adcpp_api_t *adcapi() {
 // dump buffer to python
 __ADCPP_API__ void buf2py(const char *pyfn, const void *buff, long size) {
   adcapi()->sendbuf2py(pyfn, buff, size);
+}
+// hookers
+__ADCPP_API__ void hook_inline(const void *srcfn, const void *hooker, void **orig) {
+  adcapi()->hook_inline(srcfn, hooker, orig);
+}
+__ADCPP_API__ void hook_got(const char *imagename, const char *funcname, const void *hooker) {
+  adcapi()->hook_got(imagename, funcname, hooker);
 }
 // dump string to python
 #define str2py(pyfn, format, ...) adcapi()->sendstr2py(pyfn, format, __VA_ARGS__)
