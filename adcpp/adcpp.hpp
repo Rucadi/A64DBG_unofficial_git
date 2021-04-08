@@ -167,6 +167,8 @@ struct adcpp_api_t {
   void (*hook_got)(const char *imagename, const char *funcname, const void *hooker);
 
 #if __APPLE__ // macOS/iOS
+  // void MSHookMessageEx(Class _class, SEL message, IMP hook, IMP *old);
+  void (*hook_objc)(const void *cls, const void *sel, const void *hooker, void **orig);
 #else // android
   // get the android jvm instance
   JavaVM *(*current_jvm)();
@@ -189,24 +191,33 @@ __ADCPP_API__ const adcpp_api_t *adcapi() {
   if (!api) api = uvmdbg_adcapi();
   return api;
 }
+
 // dump buffer to python
 __ADCPP_API__ void buf2py(const char *pyfn, const void *buff, long size) {
   adcapi()->sendbuf2py(pyfn, buff, size);
 }
+
 // hookers
 __ADCPP_API__ void hook_inline(const void *srcfn, const void *hooker, void **orig) {
   adcapi()->hook_inline(srcfn, hooker, orig);
 }
+
 __ADCPP_API__ void hook_got(const char *imagename, const char *funcname, const void *hooker) {
   adcapi()->hook_got(imagename, funcname, hooker);
 }
+
 // dump string to python
 #define str2py(pyfn, format, ...) adcapi()->sendstr2py(pyfn, format, __VA_ARGS__)
+
 #if __APPLE__ // macOS/iOS
+__ADCPP_API__ void hook_objc(const void *cls, const void *sel, const void *hooker, void **orig) {
+  adcapi()->hook_objc(cls, sel, hooker, orig);
+}
 #else // android
 __ADCPP_API__ JavaVM *current_jvm() {
   return adcapi()->current_jvm();
 }
+
 __ADCPP_API__ JNIEnv *current_jenv() {
   return adcapi()->current_jenv();
 }
@@ -263,9 +274,9 @@ __ADCPP_API__ JNIEnv *current_jenv() {
 
 // a valid adcpp module loaded by UnicornVM must implement one of these functions
 // the start entry of adcpp module.
-__ADCPP_CDECL__ void adc_main(void);
+__ADCPP_CDECL__ __attribute__((visibility("default"))) void adc_main(void);
 
 // the start entry of adcpp module which will interperte it in a new thread.
-__ADCPP_CDECL__ void adc_main_thread(void);
+__ADCPP_CDECL__ __attribute__((visibility("default"))) void adc_main_thread(void);
 
 #endif // end of __ADCPP_H__
