@@ -1,4 +1,15 @@
 #### Version History
+2021/4/9:
+ * 发布V1.7.0;
+ * 1.修复CPU Goto Address无效地址崩溃的问题；
+ * 2.修改uvmdbg android断点模型为segv，解决page模型函数被切断的问题；
+ * 3.添加macho adb数据库stub函数前缀imp.，解决inline hook函数定位不准的问题；
+ * 4.添加adcpp inline/got hook接口；
+ * 5.添加adcpp objc支持；
+ * 6.添加adcpp module二进制模块执行的支持；
+ * 7.添加adcpp json编译配置文件，解决复杂模块编译问题；
+ * 8.解除adcpp授权限制，非专业版也可以使用全功能的adcpp脚本系统；
+
 2021/4/2:
  * 发布V1.6.5;
  * 1.修复执行Python文件脚本报错的问题； 
