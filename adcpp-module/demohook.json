@@ -1,0 +1,5 @@
+{
+  "header_paths" : [
+    "/your/extra/header/search/directory"
+  ]
+}

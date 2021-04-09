@@ -23,6 +23,7 @@
 
 // function with this prefix is the real user api
 #define __ADCPP_API__ static inline
+#define __ADCPP_EXPORT__ __attribute__((visibility("default")))
 
 /*
  * standard headers
@@ -274,9 +275,9 @@ __ADCPP_API__ JNIEnv *current_jenv() {
 
 // a valid adcpp module loaded by UnicornVM must implement one of these functions
 // the start entry of adcpp module.
-__ADCPP_CDECL__ __attribute__((visibility("default"))) void adc_main(void);
+__ADCPP_CDECL__ __ADCPP_EXPORT__ void adc_main(void);
 
 // the start entry of adcpp module which will interperte it in a new thread.
-__ADCPP_CDECL__ __attribute__((visibility("default"))) void adc_main_thread(void);
+__ADCPP_CDECL__ __ADCPP_EXPORT__ void adc_main_thread(void);
 
 #endif // end of __ADCPP_H__

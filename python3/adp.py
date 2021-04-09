@@ -24,7 +24,7 @@ import importlib
 from adpdef import *
 
 # current version
-adpy_version = '1.0.3'
+adpy_version = '1.0.4'
 
 # register instance
 arm = register.arm()
@@ -555,10 +555,10 @@ def nextpc():
     """
     return api_proc_result('nextPC')
 
-# c/c++ expressions or path
+# run c/c++/objc expressions or path directly
 def runADCpp(code):
     """
-    run a c/c++ expression or source file inside debugee with UnicornVM.
+    run a c/c++/objc expression or source file inside debugee with UnicornVM.
     """
     api_proc('runADCpp', code)
 
@@ -567,6 +567,20 @@ def runadc(code):
     wrapper for runADCpp
     """
     return runADCpp(code)
+
+# compile c/c++/objc source path
+def compileADCpp(path):
+    """
+    compile a c/c++/objc source file to adc binary module.
+    the final arch is dependent on the debugee, default to arm64.
+    """
+    command('adcc %s' % (path))
+
+def adcc(path):
+    """
+    wrapper for compileADCpp
+    """
+    return compileADCpp(path)
 
 # event result wrapper
 def adp_result(err, value = None):
