@@ -1,4 +1,9 @@
 #### Version History
+2021/4/10:
+ * 发布V1.7.1;
+ * 1.修复intel macOS版本decache dyld cache崩溃的问题；
+ * 2.修复macOS版本lldb模式误判iOS SDK符号不存在的问题；
+
 2021/4/9:
  * 发布V1.7.0;
  * 1.修复CPU Goto Address无效地址崩溃的问题；
