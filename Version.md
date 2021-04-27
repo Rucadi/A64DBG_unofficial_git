@@ -1,4 +1,13 @@
 #### Version History
+2021/4/22:
+ * 发布V1.8.0;
+ * 1.开源A64Dbg界面框架,https://gitee.com/geekneo/X64Dbg；
+ * 2.启用全新的自主知识产权UraniumVM作为ADCpp解释引擎；
+ * 3.重构A64Dbg为界面框架、调试引擎、分析引擎三大独立模块；
+ * 4.添加objc符号解析的支持；
+ * 5.修复分析函数地址不在elf section内崩溃的问题；
+ * 6.修复Android模拟器初始化模块列表时崩溃的问题；
+
 2021/4/10:
  * 发布V1.7.1;
  * 1.修复intel macOS版本decache dyld cache崩溃的问题；
