@@ -1,4 +1,9 @@
 #### Version History
+2021/4/27:
+ * 发布V1.8.1;
+ * 1.添加ADCpp Android C++ STL的支持；
+ * 2.修复UVMDbg授权模式Trace崩溃的问题；
+
 2021/4/22:
  * 发布V1.8.0;
  * 1.开源A64Dbg界面框架,https://gitee.com/geekneo/X64Dbg；
