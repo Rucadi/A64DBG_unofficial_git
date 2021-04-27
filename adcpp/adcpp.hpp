@@ -18,7 +18,7 @@
 #ifndef __ADCPP_H__
 #define __ADCPP_H__
 
-#define __ADCPP_VERSION__ "1.0.1"
+#define __ADCPP_VERSION__ "1.0.2"
 #define __ADCPP_CDECL__ extern "C"
 
 // function with this prefix is the real user api
@@ -53,22 +53,23 @@
 #include <unistd.h>
 #include <sys/mman.h>
 
+// pre-include c++ stl headers
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+
 // pre-include for different platforms
+
 #if __APPLE__
-// macos/ios supports objc/stl
 // pre-include basic objc framework
 #if __OBJC__
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #endif
 
-// pre-include c++ stl headers
-#include <string>
-#include <vector>
-#include <set>
-#include <map>
 #else
-// android only supports pure c/c++
+// pre-include basic jni headers
 #include <jni.h>
 #include <android/log.h>
 
