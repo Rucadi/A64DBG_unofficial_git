@@ -7,12 +7,12 @@ An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg 
 An arm/arm64 virtualization debugger(uvmdbg) based on UraniumVM for macOS/iOS/Android.
  
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
- * GUI Controls is based on [X64Dbg](https://github.com/x64dbg/x64dbg);
+ * GUI Controls is based on [X64Dbg](https://gitee.com/geekneo/X64Dbg/);
  * DebugEngine is based on [LLDB](http://lldb.llvm.org/);
  * Assembler/Disassembler is based on [LLVM](http://llvm.org/);
  * Script is based on [Python](https://www.python.org/);
  * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
- * UVMEngine is developed by [YunYoo](http://yunyoo.cn/);
+ * UVMEngine is developed by [YunYoo](https://gitee.com/yunyoo/UraniumVCPU/);
 
 [Debugger Version](https://gitee.com/geekneo/A64Dbg/blob/master/Version.md):
 
