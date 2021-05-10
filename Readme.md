@@ -10,6 +10,7 @@ An arm/arm64 virtualization debugger(uvmdbg) based on UraniumVM for macOS/iOS/An
  * GUI Controls is based on [X64Dbg](https://gitee.com/geekneo/X64Dbg/);
  * DebugEngine is based on [LLDB](http://lldb.llvm.org/);
  * Assembler/Disassembler is based on [LLVM](http://llvm.org/);
+ * Decompiler is based on [RetDec](https://retdec.com/);
  * Script is based on [Python](https://www.python.org/);
  * AnalyzeEngine is developed by [YunYoo](http://yunyoo.cn/);
  * UVMEngine is developed by [YunYoo](https://gitee.com/yunyoo/UraniumVCPU/);
