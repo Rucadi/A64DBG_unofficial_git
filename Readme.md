@@ -60,9 +60,10 @@ cd /data/local/tmp/a64dbg-server-arch; ./lidadbg-server
 ```
 adb forward tcp:30333 tcp:30333
 ```
- * Android uvmdbg user: push [a64dbg-server-arm64.uvm](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64.uvm) to Android Device
+ * Android uvmdbg user: push [a64dbg-server-arm64.uvm](https://gitee.com/geekneo/A64Dbg/tree/master/a64dbg-server-arm64.uvm) to Android Device and turn off SELinux
 ```
 adb push A64Dbg/a64dbg-server-arch.uvm /data/local/tmp/
+setenforce 0
 ```
 
 Current Status:
