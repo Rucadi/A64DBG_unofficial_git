@@ -5,7 +5,15 @@
 An arm/arm64/x86/x64 assembly level debugger for macOS/iOS/Android like OllyDbg & X64Dbg.
 
 An arm/arm64 virtualization debugger(uvmdbg) based on UraniumVM for macOS/iOS/Android.
- 
+
+Running platform supports Windows/Linux/macOS, debugee platform supports macOS/Linux/iOS/Android.
+|Platform|Local|Remote Android|Remote iOS|
+|-|-|-|-|
+|Windows|No|Yes|No|
+|Linux|Yes|Yes|No|
+|Intel macOS|Yes|Yes|Yes|
+|ARM macOS|Yes|Yes|YES|
+
  * GUI Runtime is based on [Qt](https://www.qt.io/); 
  * GUI Controls is based on [X64Dbg](https://gitee.com/geekneo/X64Dbg/);
  * DebugEngine is based on [LLDB](http://lldb.llvm.org/);
@@ -18,6 +26,7 @@ An arm/arm64 virtualization debugger(uvmdbg) based on UraniumVM for macOS/iOS/An
 [Debugger Version](https://gitee.com/geekneo/A64Dbg/blob/master/Version.md):
 
  * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win);
+ * Linux user: download from [A64Dbg-Linux](https://gitee.com/geekneo/A64Dbg-Linux);
  * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac);
  * ARM macOS user: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS);
  ```
