@@ -14,6 +14,7 @@ The debugee platform supports macOS/Linux/iOS/Android.
 |-|-|-|-|
 |Windows|No|Yes|No|
 |Linux|Yes|Yes|No|
+|ARM Linux|Yes|Yes|No|
 |Intel macOS|Yes|Yes|Yes|
 |ARM macOS|Yes|Yes|Yes|
 
@@ -30,6 +31,7 @@ The debugee platform supports macOS/Linux/iOS/Android.
 
  * Windows user: download from [A64Dbg-Win](https://gitee.com/geekneo/A64Dbg-Win);
  * Linux user: download from [A64Dbg-Linux](https://gitee.com/geekneo/A64Dbg-Linux);
+ * ARM Linux user: download from [A64Dbg-LinuxARM](https://gitee.com/geekneo/A64Dbg-LinuxARM);
  * Intel macOS user: download from [A64Dbg-Mac](https://gitee.com/geekneo/A64Dbg-Mac);
  * ARM macOS user: download from [A64Dbg-iOS](https://gitee.com/geekneo/A64Dbg-iOS);
  ```
