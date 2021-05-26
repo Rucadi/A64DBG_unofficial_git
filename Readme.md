@@ -145,6 +145,13 @@ A：在Windows平台如果你是用git clone的方式下载A64Dbg软件包的，
    报错的原因是git对脚本lidadbg-server添加了'\r'字符，导致sh无法解析该脚本。解决办法：
       git config --global core.autocrlf input，禁止其添加'\r'字符；
 ```
+```
+Q：macOS平台启动调试会话报debugserver not found的原因？
+
+A：在macOS平台如果你把A64Dbg软件包放在沙盒目录AppTranslocation，启动调试会话时会报错：
+      /bin/sh: debugserver: inaccessible or not found
+   解决办法：将A64Dbg移出沙盒目录，比如移至Applications，Documents，Downloads之类的非沙盒目录；
+```
 
 
 #### Screenshot
