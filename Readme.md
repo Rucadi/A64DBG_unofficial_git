@@ -118,8 +118,10 @@ A: 首次使用A64Dbg时很多模块lldb还未传回本地生成副本，所以�
 ```
 Q: 输入Android设备Wifi IP连接调试服务出现error: Device "?.?.?.?" not found该如何处理？
 
-A: 1.执行adb forward tcp:30333 tcp:30333转发调试服务端口至本机；
-   2.调试器设置界面Android设备IP地址填入127.0.0.1；
+A: 1.在调试器设置界面设置adb全路径（建议使用android sdk里面的adb），然后在Android设备IP
+   地址填入127.0.0.1（由于lldb的限制，目前Android只支持这个IP地址），点击Save保存配置；
+   2.这样配置之后，每次启动A64Dbg就会自动设置端口转发，不再需要手动设置，你只需要保持手机
+   调试服务端一直处于运行状态即可；
 ```
 ```
 Q：通过gitee下载的macOS版本，运行提示包已损坏该如何处理？
