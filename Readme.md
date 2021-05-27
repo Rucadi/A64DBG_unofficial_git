@@ -13,7 +13,7 @@ The debugee platform supports macOS/Linux/iOS/Android.
 ||Local|Remote Android|Remote iOS|
 |-|-|-|-|
 |Windows|No|Yes|No|
-|Linux|Yes|Yes|No|
+|Intel Linux|Yes|Yes|No|
 |ARM Linux|Yes|Yes|No|
 |Intel macOS|Yes|Yes|Yes|
 |ARM macOS|Yes|Yes|Yes|
@@ -152,7 +152,16 @@ A：在macOS平台如果你把A64Dbg软件包放在沙盒目录AppTranslocation�
       /bin/sh: debugserver: inaccessible or not found
    解决办法：将A64Dbg移出沙盒目录，比如移至Applications，Documents，Downloads之类的非沙盒目录；
 ```
+```
+Q：UraniumVM虚拟化调试模式Attach/Launch之后没有反应的原因？
 
+A：虚拟化调试模式不同于LLDB通过Ptrace的方式控制目标进程，而是自建TCP通道与A64Dbg交互调试上下文，所以
+   如果出现无反应的现象，按照如下方式逐一排查：
+   1.手机是否关闭了SELinux：setenforce 0；
+   2.手机与桌面是否处于同一局域网：adb shell ping desktop-ipv4；
+   3.手机目标Debugee是否具备网络权限：如果没有可以通过修改系统配置文件添加；
+   4.首次运行A64Dbg时是否允许了使用网络通信：如果没有则在防火墙白名单里面添加A64Dbg主程序；
+```
 
 #### Screenshot
 
