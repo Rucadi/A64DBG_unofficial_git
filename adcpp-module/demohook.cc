@@ -15,7 +15,7 @@ void inline_hook_sleep(unsigned sec) {
 }
 
 void adc_main_thread() {
-  hook_got("antidebug", "printf", (void *)got_hook_printf);
+  hook_got("debugme", "printf", (void *)got_hook_printf);
   hook_inline((void *)sleep, (void *)inline_hook_sleep, &orig_sleep);
-  puts("fired hook for sleep and printf for antidebug program.\n");
+  puts("fired hook for sleep and printf for debugee program.\n");
 }

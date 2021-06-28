@@ -119,3 +119,4 @@ obj/
 .DS_Store
 *.o
 *.bc
+*.adc

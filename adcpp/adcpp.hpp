@@ -18,7 +18,7 @@
 #ifndef __ADCPP_H__
 #define __ADCPP_H__
 
-#define __ADCPP_VERSION__ "1.0.2"
+#define __ADCPP_VERSION__ "1.0.3"
 #define __ADCPP_CDECL__ extern "C"
 
 // function with this prefix is the real user api
@@ -167,6 +167,11 @@ struct adcpp_api_t {
   // hookers
   void (*hook_inline)(const void *srcfn, const void *hooker, void **orig);
   void (*hook_got)(const char *imagename, const char *funcname, const void *hooker);
+  
+  // uvm hookers
+  // trap srcfn to UraniumVM Execution Environment without code modification
+  void (*hook_inline_uvm)(const void *srcfn, const void *hooker, void **orig);
+  void (*unhook_inline_uvm)(const void *srcfn);
 
 #if __APPLE__ // macOS/iOS
   // void MSHookMessageEx(Class _class, SEL message, IMP hook, IMP *old);
@@ -206,6 +211,16 @@ __ADCPP_API__ void hook_inline(const void *srcfn, const void *hooker, void **ori
 
 __ADCPP_API__ void hook_got(const char *imagename, const char *funcname, const void *hooker) {
   adcapi()->hook_got(imagename, funcname, hooker);
+}
+
+// uvm hookers
+__ADCPP_API__ void hook_inline_uvm(const void *srcfn, const void *hooker, void **orig) {
+  adcapi()->hook_inline_uvm(srcfn, hooker, orig);
+}
+
+// uvm unhookers
+__ADCPP_API__ void unhook_inline_uvm(const void *srcfn) {
+  adcapi()->unhook_inline_uvm(srcfn);
 }
 
 // dump string to python
