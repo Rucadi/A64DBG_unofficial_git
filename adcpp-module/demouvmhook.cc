@@ -1,6 +1,6 @@
 static void *orig_sleep = nullptr;
 void inline_hook_uvm_sleep(unsigned sec) {
-  printf("hooked sleep : debugee want to sleep %d seconds.\n", sec);
+  printf("uvm hooked sleep : debugee want to sleep %d seconds.\n", sec);
   ((void (*)(unsigned))orig_sleep)(sec);
 }
 
