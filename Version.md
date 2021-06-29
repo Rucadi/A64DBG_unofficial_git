@@ -1,4 +1,12 @@
 #### Version History
+2021/6/29:
+ * 发布V1.11.0;
+ * 1.添加ADCpp内存页托管类型无痕Inline Hook接口hook_inline_uvm（专业版可用）；
+ * 2.添加内存页模块类型，解决某些内存代码无法显示反汇编的问题；
+ * 3.添加颜色、字体等配置保存的支持；
+ * 4.禁用LLDBRPC for local macOS调试模式解决与debugserver冲突的问题；
+ * 5.修复UVMDbg断点针对某些arm/thumb切换崩溃的问题；
+
 2021/6/10:
  * 发布V1.10.2;
  * 1.修复某些App uvmdbg模块刷新时崩溃的问题；
